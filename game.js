@@ -2,17 +2,41 @@
 
 const fs = require('fs');
 const path = require('path');
-const yargs = require('yargs/yargs');
-const arg = yargs.hideBin(process.argv)[0];
+const file = path.join(__dirname, 'result.txt');
+const readline = require('readline');
 
+let all = 0;
+let win = 0;
+let lost = 0;
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
+
+console.log('Угадай 1 или 0 \n');
 const guessDigit = () => {
     const digit = Math.floor((Math.random() * 2) + 1);
-    const file = path.join(__dirname, 'result.txt');
     const content = `Загаданное число - ${digit}\n`;
-    fs.appendFile(file, content, () => {});
-    if (arg == digit) {
-        console.log('Вы угадали!');
-    }
+    fs.appendFileSync(file, content, () => {});
+
+    rl.question('', (answer) => {
+        if (answer == digit) {
+            win++;
+            console.log(' ---- Вы угадали! --- \n');
+        } else if (answer != digit && answer.match(/[12]/) ){
+            lost++;
+        } else {
+            console.log('Вы указали число, не соответствующее условию');
+            return rl.close();
+        }
+        all = win + lost;
+        console.log(`Общее число партий - ${all}`);
+        console.log(`Количество выигранных партий - ${win}, количество проигранных - ${lost}`);
+        console.log(`Процентное соотношение выигранных партий - ${win/lost}`);
+        guessDigit();
+    })
 }
 
 guessDigit();
+
