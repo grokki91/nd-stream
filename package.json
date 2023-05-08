@@ -1,0 +1,26 @@
+{
+  "name": "nd-stream",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "game": "game.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grokki91/nd-stream.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grokki91/nd-stream/issues"
+  },
+  "homepage": "https://github.com/grokki91/nd-stream#readme",
+  "dependencies": {
+    "yargs": "^17.7.2"
+  }
+}
