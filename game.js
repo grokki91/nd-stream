@@ -14,7 +14,7 @@ const rl = readline.createInterface({
     output: process.stdout
 })
 
-console.log('Угадай 1 или 0 \n');
+console.log('Угадай 1 или 2 \n');
 const guessDigit = () => {
     const digit = Math.floor((Math.random() * 2) + 1);
     const content = `Загаданное число - ${digit}\n`;
@@ -33,7 +33,7 @@ const guessDigit = () => {
         all = win + lost;
         console.log(`Общее число партий - ${all}`);
         console.log(`Количество выигранных партий - ${win}, количество проигранных - ${lost}`);
-        console.log(`Процентное соотношение выигранных партий - ${win/lost}`);
+        console.log(`Процентное соотношение выигранных партий - ${win/lost * 100} %`);
         guessDigit();
     })
 }
